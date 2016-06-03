@@ -15,20 +15,20 @@ def convertDateFormat(date):
   return pd.to_datetime(str(date)) 
 
 def categorizeDiff(value):
-	if value < -20:
-		return 1
-	elif value < -10:
-		return 2
-	elif value < -5:
-		return 3
-	elif value < 5:
-		return 4
-	elif value < 10:
-		return 5
-	elif value < 20:
-		return 6
-	else:
-		return 7
+  if value < -20:
+    return 1
+  elif value < -10:
+    return 2
+  elif value < -5:
+    return 3
+  elif value < 5:
+    return 4
+  elif value < 10:
+    return 5
+  elif value < 20:
+    return 6
+  else:
+    return 7
 
 # read files in ../sourceData/youbike
 youbike_file_path = './sourceData/youbike/'
@@ -37,8 +37,8 @@ youbike_data = [f for f in os.listdir(youbike_file_path) if os.path.isfile(os.pa
 # read all data
 df = pd.read_csv(youbike_file_path+youbike_data[1])
 for idx in range(2, len(youbike_data)):
-	temp_df = pd.read_csv(youbike_file_path+youbike_data[idx])
-	df = df.append(temp_df, ignore_index=True)
+  temp_df = pd.read_csv(youbike_file_path+youbike_data[idx])
+  df = df.append(temp_df, ignore_index=True)
 print len(df)
 
 df = df.ix[:, ['mday','lat','lng','sbi']].sort(['lat','lng','mday']).reset_index(drop=True)
